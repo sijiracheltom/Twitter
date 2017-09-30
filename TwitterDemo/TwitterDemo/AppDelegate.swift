@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print(url.description)
+        
+        let requestToken = BDBOAuth1Credential(queryString: url.query)
+        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string:"https://api.twitter.com")!, consumerKey: "uHui9q0sDY9DL7p97iO6FY8Kk", consumerSecret: "xqCd7AY9s2IyXb4kHCkk2Yiv5ctyOqaIXUibU6gZjrZQMiigQ1")
+        
+        twitterClient?.fetchAccessToken(withPath: "oauth/access_token",
+                                        method: "POST",
+                                        requestToken: requestToken,
+                                        success: { (accessToken : BDBOAuth1Credential?) in
+                                            
+                                            print("Sucessful! Access token: \(accessToken!.token)")
+                                            twitterClient?.get("1.1/account/verify_credentials.json",
+                                                               parameters: nil,
+                                                               progress: nil,
+                                                               
+                                                               success: {(task : URLSessionDataTask, response: Any?) in
+                                                                let user = response as? NSDictionary
+                                                                print("Name: \(user?["name"] ?? "no_name")")},
+                                                               
+                                                               failure: { (task: URLSessionDataTask?, error: Error) in
+                                                                print("Error: \(error.localizedDescription)")})
+                                            
+                                            twitterClient?.get("1.1/statuses/home_timeline.json",
+                                                               parameters: nil,
+                                                               progress: nil,
+                                                               success: { (task: URLSessionDataTask, response: Any?) in
+                                                                let tweets = response as? [NSDictionary]
+                                                                
+                                                                for tweet in tweets! {
+                                                                    print("\(String(describing: tweet["text"]!))")
+                                                                }},
+                                                               
+                                                               failure: { (task: URLSessionDataTask?, error: Error) in
+                                                                print("Error: \(error)")
+                                                                })
+        
+                                        },
+                                        
+                                        failure: { (error: Error?) in
+                                            print("Error: \(error!.localizedDescription)")
+                                        }
+        )
+        
+        return true
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
