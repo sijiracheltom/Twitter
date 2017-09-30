@@ -23,29 +23,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onLogin(_ sender: Any) {
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string:"https://api.twitter.com")!, consumerKey: "uHui9q0sDY9DL7p97iO6FY8Kk", consumerSecret: "xqCd7AY9s2IyXb4kHCkk2Yiv5ctyOqaIXUibU6gZjrZQMiigQ1")
+        let twitterClient = TwitterClient.sharedInstance
         
-        // Clear previous sessions
-        twitterClient?.deauthorize()
-        
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token",
-                                         method: "GET",
-                                         callbackURL: URL(string: "twitterdemo://oauth"),
-                                         scope: nil,
-                                         success: { (requestToken : BDBOAuth1Credential?) in
-                                            print("Twitter secure token received")
-                                            
-                                            // Send the user to be authorized directly
-                                            if let requestToken = requestToken {
-                                                let token = requestToken.token!
-                                                let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")!
-                                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                            }},
-                                         
-                                         failure: { (error : Error?) in
-                                            print("error : \(String(describing: error?.localizedDescription))")})
-        
-        
+        twitterClient?.login(success: {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }, failure: { (error: Error) -> () in
+            print("error : \(String(describing: error.localizedDescription))")
+        })
     }
     
     /*
