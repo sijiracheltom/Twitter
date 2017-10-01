@@ -20,7 +20,12 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             self.tweetText.text = tweet.text
-            self.timestampLabel.text = tweet.creationDate?.description(with: Locale.current)
+            self.nameLabel.text = tweet.user?.name
+            self.twitterHandle.text = "@\(tweet.user?.screenname ?? "")"
+            
+            if let url = tweet.user?.profileURL {
+                self.profileImage.setImageWith(url)
+            }
             
             if let creationDate = tweet.creationDate {
                 let componentSet : Set = [Calendar.Component.hour, Calendar.Component.minute, Calendar.Component.second]
@@ -28,11 +33,6 @@ class TweetCell: UITableViewCell {
                                                                  from: creationDate,
                                                                  to: Date())
                 self.timestampLabel.text = timeString(components: components)
-                self.nameLabel.text = tweet.user?.name
-                self.twitterHandle.text = "@\(tweet.user?.screenname ?? "")"
-                if let url = tweet.user?.profileURL {
-                    self.profileImage.setImageWith(url)
-                }
             }
         }
     }

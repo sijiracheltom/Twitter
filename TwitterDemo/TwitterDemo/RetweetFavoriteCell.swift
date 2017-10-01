@@ -10,6 +10,16 @@ import UIKit
 
 class RetweetFavoriteCell: UITableViewCell {
 
+    @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var favoriteLabel: UILabel!
+    
+    var tweet: Tweet! {
+        didSet {
+            self.retweetLabel.text = "\(tweet.retweetCount)"
+            self.favoriteLabel.text = "\(tweet.favoriteCount)"
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

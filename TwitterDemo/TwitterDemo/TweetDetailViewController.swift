@@ -43,8 +43,12 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         switch row {
         case .tweetDetail:
             cell = tableView.dequeueReusableCell(withIdentifier: "TweetDetailCell", for: indexPath)
+            (cell as! DetailTweetCell).tweet = self.tweet
+            
         case .counter:
             cell = tableView.dequeueReusableCell(withIdentifier: "CounterCell", for: indexPath)
+            (cell as! RetweetFavoriteCell).tweet = self.tweet
+            
         case .controls:
             cell = tableView.dequeueReusableCell(withIdentifier: "ControlsCell", for: indexPath)
         case .totalCount:
