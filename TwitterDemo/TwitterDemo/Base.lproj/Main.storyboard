@@ -23,8 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6D-DM-gCI">
-                                <rect key="frame" x="69" y="318" width="182" height="77"/>
+                                <rect key="frame" x="66" y="215" width="188" height="50"/>
                                 <color key="backgroundColor" red="0.38963949680328369" green="0.8643384575843811" blue="0.9851340651512146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0Km-vd-fe4"/>
+                                </constraints>
                                 <state key="normal" title="Login to Twitter">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -35,10 +38,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="H6D-DM-gCI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="298" id="AaE-e2-QIB"/>
-                            <constraint firstItem="H6D-DM-gCI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="53" id="Q1O-p9-G1w"/>
+                            <constraint firstItem="H6D-DM-gCI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BxW-8M-bwh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H6D-DM-gCI" secondAttribute="trailing" constant="50" id="YCV-LM-6BV"/>
+                            <constraint firstItem="H6D-DM-gCI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="ahJ-Aw-RfV"/>
                             <constraint firstItem="H6D-DM-gCI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ds5-Wk-qVZ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="H6D-DM-gCI" secondAttribute="bottom" constant="85" id="osP-lZ-Zmv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -83,7 +86,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MIv-T8-JgL">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MIv-T8-JgL">
                                             <rect key="frame" x="12" y="12" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="7aC-cS-iWo"/>
@@ -99,17 +102,17 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zj1-df-uLc" firstAttribute="top" secondItem="kzI-S3-ezQ" secondAttribute="bottom" constant="4" id="9aq-zX-D5X"/>
-                                        <constraint firstItem="R6a-It-vet" firstAttribute="trailing" secondItem="UVf-0r-AVV" secondAttribute="trailingMargin" constant="4" id="I6Z-PE-JHw"/>
+                                        <constraint firstItem="R6a-It-vet" firstAttribute="top" secondItem="UVf-0r-AVV" secondAttribute="topMargin" constant="4" id="FNZ-7B-yx4"/>
                                         <constraint firstItem="eeB-PP-cg2" firstAttribute="leading" secondItem="kzI-S3-ezQ" secondAttribute="trailing" constant="8" id="J4h-xE-YEy"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="MIv-T8-JgL" secondAttribute="bottom" constant="4" id="OQ1-78-4al"/>
+                                        <constraint firstItem="R6a-It-vet" firstAttribute="trailing" secondItem="UVf-0r-AVV" secondAttribute="trailingMargin" constant="4" id="Ug6-kC-ZvY"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="zj1-df-uLc" secondAttribute="trailing" constant="4" id="WyF-Sl-8Fn"/>
                                         <constraint firstItem="zj1-df-uLc" firstAttribute="leading" secondItem="MIv-T8-JgL" secondAttribute="trailing" constant="4" id="YS2-cY-qvA"/>
                                         <constraint firstItem="kzI-S3-ezQ" firstAttribute="leading" secondItem="MIv-T8-JgL" secondAttribute="trailing" constant="4" id="ZKV-te-yL5"/>
-                                        <constraint firstItem="R6a-It-vet" firstAttribute="top" secondItem="UVf-0r-AVV" secondAttribute="topMargin" constant="4" id="eNv-8Z-4ch"/>
                                         <constraint firstItem="kzI-S3-ezQ" firstAttribute="top" secondItem="UVf-0r-AVV" secondAttribute="topMargin" constant="4" id="eNw-ee-oZk"/>
-                                        <constraint firstItem="R6a-It-vet" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eeB-PP-cg2" secondAttribute="trailing" constant="8" id="iOO-cm-jU8"/>
                                         <constraint firstItem="MIv-T8-JgL" firstAttribute="leading" secondItem="UVf-0r-AVV" secondAttribute="leadingMargin" constant="4" id="kXS-ju-s48"/>
                                         <constraint firstItem="MIv-T8-JgL" firstAttribute="top" secondItem="UVf-0r-AVV" secondAttribute="topMargin" constant="4" id="o8e-QC-OZq"/>
+                                        <constraint firstItem="R6a-It-vet" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eeB-PP-cg2" secondAttribute="trailing" constant="4" id="prU-T6-8fM"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="zj1-df-uLc" secondAttribute="bottom" constant="4" id="tcb-D5-URL"/>
                                         <constraint firstItem="eeB-PP-cg2" firstAttribute="top" secondItem="UVf-0r-AVV" secondAttribute="topMargin" constant="4" id="ytv-BI-7uX"/>
                                     </constraints>

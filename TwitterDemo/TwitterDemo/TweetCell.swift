@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class TweetCell: UITableViewCell {
     
@@ -27,6 +28,11 @@ class TweetCell: UITableViewCell {
                                                                  from: creationDate,
                                                                  to: Date())
                 self.timestampLabel.text = timeString(components: components)
+                self.nameLabel.text = tweet.user?.name
+                self.twitterHandle.text = "@\(tweet.user?.screenname ?? "")"
+                if let url = tweet.user?.profileURL {
+                    self.profileImage.setImageWith(url)
+                }
             }
         }
     }
@@ -51,6 +57,11 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.profileImage.layer.cornerRadius = 10.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
