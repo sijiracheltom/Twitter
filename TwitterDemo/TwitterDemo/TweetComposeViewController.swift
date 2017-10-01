@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class TweetComposeViewController: UIViewController {
 
@@ -35,6 +36,26 @@ class TweetComposeViewController: UIViewController {
     }
     
     @IBAction func onTweet(_ sender: Any) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let tweetStr = tweetTextField.text ?? ""
+        TwitterClient.sharedInstance?.tweet(tweet: tweetStr,
+                                            success: { [weak self] () in
+                                                print("Successfully posted tweet")
+                                                MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                                                self?.dismiss(animated: true, completion: nil)
+        },
+                                            failure: { [weak self] (error: Error) in
+                                                print("Error posting tweet: \(error.localizedDescription)")
+                                                MBProgressHUD.hide(for: (self?.view)!, animated: true)
+                                                
+                                                let alertController = UIAlertController(title: "Error", message: "Please try posting again", preferredStyle: UIAlertControllerStyle.alert)
+                                                let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                                                alertController.addAction(action)
+                                                
+                                                self?.present(alertController, animated: true, completion: nil)
+                                                
+        })
     }
 
     @IBAction func onCancel(_ sender: Any) {

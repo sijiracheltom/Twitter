@@ -235,10 +235,10 @@
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="onTweet:" destination="QcT-ml-9Ss" eventType="touchUpInside" id="ChO-Ek-3om"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="onTweet:" destination="QcT-ml-9Ss" id="24L-zo-VL7"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

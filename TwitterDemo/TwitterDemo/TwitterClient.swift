@@ -29,14 +29,29 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func updateCurrentUser() {
+    func updateCurrentUser(success: (()->())?, failure: ((Error)->())?) {
         currentAccount(
             success: { (user: User) in
                 User.currentUser = user
+                success?()
         },
             failure: { (error: Error) in
                 print("Error getting current user: \(error.localizedDescription)")
+                failure?(error)
         })
+    }
+    
+    func tweet(tweet: String!, success: @escaping ()->(), failure: @escaping (Error)->()) -> Void {
+        let parameters = ["status" : tweet]
+        post("1.1/statuses/update.json",
+             parameters: parameters,
+             progress: nil,
+             success: { (task: URLSessionDataTask, response: Any?) in
+                success()},
+             failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+            }
+        )
     }
     
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
@@ -99,6 +114,8 @@ class TwitterClient: BDBOAuth1SessionManager {
                          requestToken: requestToken,
                          success: { (accessToken : BDBOAuth1Credential?) in
                             print("Sucessful! Access token: \(accessToken!.token)")
+                            
+                            self.updateCurrentUser(success: nil, failure: nil)
                             self.loginSuccess?()
                         },
                          

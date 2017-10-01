@@ -19,13 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if User.currentUser != nil {
-            print("There is a current user")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-            window?.rootViewController = vc
             
             // Update the current user details to get any new changes
-            TwitterClient.sharedInstance?.updateCurrentUser()
+            TwitterClient.sharedInstance?.updateCurrentUser(
+                success: { [weak self] in
+                    print("There is a current user")
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+                    self?.window?.rootViewController = vc
+            },
+                failure: { (error: Error) in
+                    print("Token expired, going through the process.")
+            })
         } else {
             print("There aren't any current users, going through the process.")
         }
