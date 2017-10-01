@@ -154,10 +154,10 @@
             </objects>
             <point key="canvasLocation" x="1920" y="145"/>
         </scene>
-        <!--Tweets Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="lIX-vP-3rH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="067-lF-79c" customClass="TweetsNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="067-lF-79c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O13-Q2-ave">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

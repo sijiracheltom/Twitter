@@ -29,7 +29,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func currentAccount() {
+    func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json",
             parameters: nil,
             progress: nil,
@@ -37,11 +37,14 @@ class TwitterClient: BDBOAuth1SessionManager {
             success: {(task : URLSessionDataTask, response: Any?) in
                 let userDictionary = response as! NSDictionary
                 let user = User(dictionary: userDictionary)
-                print("Name: \(String(describing: user.name))")
-                print("ScreenName: \(String(describing: user.screenname))")},
+
+                success(user)
+            },
             
             failure: { (task: URLSessionDataTask?, error: Error) in
-                print("Error: \(error.localizedDescription)")})
+                failure (error)
+            }
+        )
     }
     
     var loginSuccess: (() -> ())?

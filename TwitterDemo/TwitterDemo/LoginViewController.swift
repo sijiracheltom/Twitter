@@ -26,9 +26,19 @@ class LoginViewController: UIViewController {
         let twitterClient = TwitterClient.sharedInstance
         
         twitterClient?.login(success: {
+            
+            TwitterClient.sharedInstance?.currentAccount(
+                success: { (user: User) in
+                    User.currentUser = user
+            },
+                failure: { (error: Error) in
+                    print("Error getting current user: \(error.localizedDescription)")
+            })
+            
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            
         }, failure: { (error: Error) -> () in
-            print("error : \(String(describing: error.localizedDescription))")
+            print("Error logging in: \(String(describing: error.localizedDescription))")
         })
     }
     
