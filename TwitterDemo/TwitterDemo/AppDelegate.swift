@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
             window?.rootViewController = vc
+            
+            // Update the current user details to get any new changes
+            TwitterClient.sharedInstance?.updateCurrentUser()
         } else {
             print("There aren't any current users, going through the process.")
         }

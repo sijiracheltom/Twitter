@@ -29,6 +29,16 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func updateCurrentUser() {
+        currentAccount(
+            success: { (user: User) in
+                User.currentUser = user
+        },
+            failure: { (error: Error) in
+                print("Error getting current user: \(error.localizedDescription)")
+        })
+    }
+    
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json",
             parameters: nil,

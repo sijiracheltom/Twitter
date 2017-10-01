@@ -50,14 +50,22 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.sharedInstance?.logout()
     }
 
-    /*
+    @IBAction func onComposeTweet(_ sender: Any) {
+        self.performSegue(withIdentifier: "TweetComposeSegueID", sender: nil)
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let composeNC = segue.destination as! UINavigationController
+        let composeVC = composeNC.topViewController as! TweetComposeViewController
+        composeVC.user = User.currentUser
     }
-    */
+    
 
 }
