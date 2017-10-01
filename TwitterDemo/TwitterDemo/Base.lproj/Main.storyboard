@@ -195,25 +195,29 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7r-rX-VLA">
-                                <rect key="frame" x="8" y="153" width="304" height="30"/>
-                                <nil key="textColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pEA-d0-1Nl">
+                                <rect key="frame" x="8" y="153" width="304" height="131"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="131" id="MOx-Pi-z1G"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="zh0-zB-gqb" secondAttribute="trailing" constant="8" id="3xb-hH-tMx"/>
-                            <constraint firstAttribute="trailing" secondItem="w7r-rX-VLA" secondAttribute="trailing" constant="8" id="4fi-Qs-NhB"/>
                             <constraint firstItem="UA2-St-NFA" firstAttribute="top" secondItem="ncV-Oi-Pfu" secondAttribute="bottom" constant="8" id="54Q-xJ-aNL"/>
+                            <constraint firstAttribute="trailing" secondItem="pEA-d0-1Nl" secondAttribute="trailing" constant="8" id="9Rn-rZ-PCT"/>
                             <constraint firstItem="zh0-zB-gqb" firstAttribute="leading" secondItem="s3U-Pp-bS5" secondAttribute="trailing" constant="8" id="GAN-qH-DHt"/>
-                            <constraint firstItem="w7r-rX-VLA" firstAttribute="leading" secondItem="eCt-Qd-to1" secondAttribute="leading" constant="8" id="N2Z-kn-Svs"/>
+                            <constraint firstItem="pEA-d0-1Nl" firstAttribute="leading" secondItem="eCt-Qd-to1" secondAttribute="leading" constant="8" id="IXZ-gg-bk0"/>
+                            <constraint firstItem="pEA-d0-1Nl" firstAttribute="top" secondItem="GCx-2E-nx1" secondAttribute="bottom" constant="8" id="OHX-7Z-oaq"/>
                             <constraint firstItem="GCx-2E-nx1" firstAttribute="top" secondItem="s3U-Pp-bS5" secondAttribute="bottom" constant="8" id="RGp-5J-XKa"/>
                             <constraint firstItem="UA2-St-NFA" firstAttribute="leading" secondItem="s3U-Pp-bS5" secondAttribute="trailing" constant="8" id="bho-XF-dPX"/>
                             <constraint firstItem="GCx-2E-nx1" firstAttribute="trailing" secondItem="eCt-Qd-to1" secondAttribute="trailingMargin" constant="8" id="byp-bu-cRK"/>
                             <constraint firstItem="s3U-Pp-bS5" firstAttribute="top" secondItem="ncV-Oi-Pfu" secondAttribute="bottom" constant="8" id="g6c-Ls-Cbd"/>
-                            <constraint firstItem="w7r-rX-VLA" firstAttribute="top" secondItem="GCx-2E-nx1" secondAttribute="bottom" constant="8" id="r2V-rI-dgB"/>
                             <constraint firstItem="zh0-zB-gqb" firstAttribute="top" secondItem="UA2-St-NFA" secondAttribute="bottom" constant="4" id="vim-jW-tRt"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="UA2-St-NFA" secondAttribute="trailing" constant="8" id="wbp-RD-nsN"/>
                             <constraint firstItem="s3U-Pp-bS5" firstAttribute="leading" secondItem="eCt-Qd-to1" secondAttribute="leading" constant="8" id="zLn-r5-tSI"/>
@@ -245,7 +249,7 @@
                         <outlet property="profileImageView" destination="s3U-Pp-bS5" id="z0C-w5-VLp"/>
                         <outlet property="profileNameLabel" destination="UA2-St-NFA" id="dvm-My-gCg"/>
                         <outlet property="profileScreenNameLabel" destination="zh0-zB-gqb" id="EQL-4B-VWb"/>
-                        <outlet property="tweetTextField" destination="w7r-rX-VLA" id="t33-Lh-b8E"/>
+                        <outlet property="tweetTextView" destination="pEA-d0-1Nl" id="l4N-Kg-ToQ"/>
                         <outlet property="tweetWordCountLabel" destination="GCx-2E-nx1" id="ZJ8-2w-hpU"/>
                     </connections>
                 </viewController>

@@ -9,3 +9,4 @@
 import UIKit
 
 public let kTDUserDidSignOutNotificationName = "UserDidSignOut"
+public let kTDMaxCharactersInTweet : Int = 140

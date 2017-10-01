@@ -9,18 +9,20 @@
 import UIKit
 import MBProgressHUD
 
-class TweetComposeViewController: UIViewController {
+class TweetComposeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var tweetTextField: UITextField!
+    @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var tweetWordCountLabel: UILabel!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileScreenNameLabel: UILabel!
     
     var user : User!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tweetTextView.delegate = self
 
         // Do any additional setup after loading the view.
         self.profileNameLabel.text = user.name ?? ""
@@ -28,8 +30,19 @@ class TweetComposeViewController: UIViewController {
         if let profileURL = user.profileURL {
             self.profileImageView.setImageWith(profileURL)
         }
+        self.tweetWordCountLabel.text = "\(kTDMaxCharactersInTweet)"
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tweetTextView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tweetTextView.resignFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,7 +51,7 @@ class TweetComposeViewController: UIViewController {
     @IBAction func onTweet(_ sender: Any) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        let tweetStr = tweetTextField.text ?? ""
+        let tweetStr = tweetTextView.text ?? ""
         TwitterClient.sharedInstance?.tweet(tweet: tweetStr,
                                             success: { [weak self] () in
                                                 print("Successfully posted tweet")
@@ -60,6 +73,22 @@ class TweetComposeViewController: UIViewController {
 
     @IBAction func onCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let onScreenCharacterCount = (textView.text?.characters.count) ?? 0
+        let newCharactersCount = (text.characters.count)
+        let totalCharacterCount = onScreenCharacterCount + newCharactersCount
+        let remainingAllowedCharacterCount = kTDMaxCharactersInTweet - totalCharacterCount
+        
+        if totalCharacterCount > kTDMaxCharactersInTweet {
+            return false
+        } else {
+            tweetWordCountLabel.text = "\(remainingAllowedCharacterCount)"
+            tweetWordCountLabel.sizeToFit()
+            
+            return true
+        }
     }
     
     /*
