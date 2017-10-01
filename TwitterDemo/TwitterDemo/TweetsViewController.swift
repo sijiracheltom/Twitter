@@ -12,6 +12,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet var tableView: UITableView!
     
+    var refreshControl : UIRefreshControl!
     var tweets = [Tweet]()
     
     override func viewDidLoad() {
@@ -22,16 +23,29 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        fetchTweets()
+        
+        // Initialize a UIRefreshControl
+        self.refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        // add refresh control to table view
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    func fetchTweets() -> Void {
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-            
             self.tweets = tweets
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
             
         }, failure: { (error: Error) in
-            
             print("Error: \(error)")
+            self.refreshControl.endRefreshing()
         })
-        // Do any additional setup after loading the view.
+    }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        fetchTweets()
     }
     
     // MARK: - tableview methods

@@ -77,7 +77,11 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let onScreenCharacterCount = (textView.text?.characters.count) ?? 0
-        let newCharactersCount = (text.characters.count)
+        var newCharactersCount = (text.characters.count)
+        if newCharactersCount == 0 {
+            // characters are deleted
+            newCharactersCount = range.length
+        }
         let totalCharacterCount = onScreenCharacterCount + newCharactersCount
         let remainingAllowedCharacterCount = kTDMaxCharactersInTweet - totalCharacterCount
         
