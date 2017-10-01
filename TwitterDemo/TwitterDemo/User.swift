@@ -25,33 +25,37 @@ class User: NSObject {
         tagline = dictionary["description"] as? String
     }
     
-    static let userDataKey = "currentUserDataa"
-    
+    static let userDataKey = "currentUserData"
     static private var _currentUser: User?
     
     class var currentUser: User? {
         get {
             if _currentUser == nil {
                 let defaults = UserDefaults.standard
-                let userData = defaults.object(forKey: User.userDataKey)
+                let userData = defaults.object(forKey: User.userDataKey) as? Data
                 if let userData = userData {
-                    let dict = try! JSONSerialization.jsonObject(with: userData, options: [])
-                    _currentUser = User(dictionary: dict)
+                    let dict = try! JSONSerialization.jsonObject(with: userData, options: []) as? NSDictionary
+                    if let dict = dict {
+                        _currentUser = User(dictionary: dict)
+                    }
                 }
             }
             
             return _currentUser
         }
         set(user) {
-            let defaults = UserDefaults.standard
-            if let user = user {
-                let data = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
-                defaults.set(data, forKey: User.userDataKey)
-            } else {
-                defaults.set(nil, forKey: User.userDataKey)
+            if _currentUser != user {
+                _currentUser = user
+                let defaults = UserDefaults.standard
+                if let user = user {
+                    let data = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
+                    defaults.set(data, forKey: User.userDataKey)
+                } else {
+                    defaults.set(nil, forKey: User.userDataKey)
+                }
+                
+                defaults.synchronize()
             }
-            
-            defaults.synchronize()
         }
     }
 }

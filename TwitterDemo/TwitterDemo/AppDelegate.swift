@@ -17,7 +17,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if User.currentUser != nil {
+            print("There is a current user")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            window?.rootViewController = vc
+        } else {
+            print("There aren't any current users, going through the process.")
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogOut), name: NSNotification.Name(rawValue: kTDUserDidSignOutNotificationName), object: nil)
+        
         return true
+    }
+    
+    func userDidLogOut() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()
+        window?.rootViewController = vc
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
