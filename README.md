@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 - [x] Error UI if post was not successfully tweeted.
 - [x] Spinner when waiting for post to be tweeted. (MBProgressHUD)
 - [x] Login again when the session token expires
-
+- [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

@@ -86,6 +86,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         let remainingAllowedCharacterCount = kTDMaxCharactersInTweet - totalCharacterCount
         
         if totalCharacterCount > kTDMaxCharactersInTweet {
+            
             return false
         } else {
             tweetWordCountLabel.text = "\(remainingAllowedCharacterCount)"
