@@ -24,7 +24,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6D-DM-gCI">
                                 <rect key="frame" x="66" y="215" width="188" height="50"/>
-                                <color key="backgroundColor" red="0.38963949680328369" green="0.8643384575843811" blue="0.9851340651512146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Km-vd-fe4"/>
                                 </constraints>
@@ -45,6 +45,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="H6D-DM-gCI" id="wbi-hU-TVL"/>
                         <segue destination="067-lF-79c" kind="presentation" identifier="loginSegue" id="TaV-xA-98M"/>
                     </connections>
                 </viewController>
@@ -86,12 +87,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MIv-T8-JgL">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MIv-T8-JgL">
                                             <rect key="frame" x="12" y="12" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="7aC-cS-iWo"/>
                                                 <constraint firstAttribute="width" constant="50" id="EWc-4w-seU"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="54h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6a-It-vet">
                                             <rect key="frame" x="264" y="12" width="19" height="12"/>
@@ -159,7 +166,7 @@
             </objects>
             <point key="canvasLocation" x="1920" y="145"/>
         </scene>
-        <!--Tweet Compose View Controller-->
+        <!--Compose-->
         <scene sceneID="Y9t-rh-HAm">
             <objects>
                 <viewController id="QcT-ml-9Ss" customClass="TweetComposeViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,12 +178,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s3U-Pp-bS5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s3U-Pp-bS5">
                                 <rect key="frame" x="8" y="72" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="MIx-Qq-gA6"/>
                                     <constraint firstAttribute="height" constant="50" id="bhz-x3-cVg"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siji Rachel Tom" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UA2-St-NFA">
                                 <rect key="frame" x="66" y="72" width="97.5" height="16"/>
@@ -224,7 +237,7 @@
                             <constraint firstItem="s3U-Pp-bS5" firstAttribute="leading" secondItem="eCt-Qd-to1" secondAttribute="leading" constant="8" id="zLn-r5-tSI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="EDM-aY-gWa">
+                    <navigationItem key="navigationItem" title="Compose" id="EDM-aY-gWa">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="IO6-EK-Swx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bND-dk-2cl">
                                 <rect key="frame" x="16" y="7" width="71" height="30"/>
@@ -324,6 +337,12 @@
                                                         <constraint firstAttribute="height" constant="50" id="699-pa-M9B"/>
                                                         <constraint firstAttribute="width" constant="50" id="Pcd-w7-1SA"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siji Rachel Tom" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OU-UM-VNB">
                                                     <rect key="frame" x="66" y="16" width="110.5" height="18"/>

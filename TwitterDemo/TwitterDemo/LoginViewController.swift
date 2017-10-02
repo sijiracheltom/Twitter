@@ -11,17 +11,15 @@ import BDBOAuth1Manager
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loginButton.backgroundColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func onLogin(_ sender: Any) {
         let twitterClient = TwitterClient.sharedInstance
         

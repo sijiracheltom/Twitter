@@ -31,6 +31,10 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
             self.profileImageView.setImageWith(profileURL)
         }
         self.tweetWordCountLabel.text = "\(kTDMaxCharactersInTweet)"
+        
+        navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

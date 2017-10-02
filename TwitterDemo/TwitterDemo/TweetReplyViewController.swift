@@ -47,6 +47,10 @@ class TweetReplyViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         textView.text = "@\(userName!)"
+        
+        navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
     }
 
     /*

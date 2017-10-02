@@ -34,9 +34,15 @@ class User: NSObject {
                 let defaults = UserDefaults.standard
                 let userData = defaults.object(forKey: User.userDataKey) as? Data
                 if let userData = userData {
-                    let dict = try! JSONSerialization.jsonObject(with: userData, options: []) as? NSDictionary
-                    if let dict = dict {
-                        _currentUser = User(dictionary: dict)
+                    do {
+                        let dict = try JSONSerialization.jsonObject(with: userData, options: []) as? NSDictionary
+                        if let dict = dict {
+                            _currentUser = User(dictionary: dict)
+                        }
+                    }
+                    catch {
+                        print("Something went wrong. Clearing user defaults")
+                        defaults.set(nil, forKey: User.userDataKey)
                     }
                 }
             }
