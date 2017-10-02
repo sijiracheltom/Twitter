@@ -26,7 +26,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
         self.profileNameLabel.text = user.name ?? ""
-        self.profileScreenNameLabel.text = user.screenname ?? ""
+        self.profileScreenNameLabel.text = "@\(user.screenname ?? "")"
         if let profileURL = user.profileURL {
             self.profileImageView.setImageWith(profileURL)
         }
