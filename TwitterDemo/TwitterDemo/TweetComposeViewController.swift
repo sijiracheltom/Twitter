@@ -85,7 +85,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         var newCharactersCount = (text.characters.count)
         if newCharactersCount == 0 {
             // characters are deleted
-            newCharactersCount = range.length
+            newCharactersCount = -range.length
         }
         let totalCharacterCount = onScreenCharacterCount + newCharactersCount
         let remainingAllowedCharacterCount = kTDMaxCharactersInTweet - totalCharacterCount
