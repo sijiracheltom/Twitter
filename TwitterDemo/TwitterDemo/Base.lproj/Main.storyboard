@@ -559,7 +559,10 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Do7-Es-L4P">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="onPost:" destination="5tf-OF-TCu" eventType="touchUpInside" id="Ss8-51-8Vo"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

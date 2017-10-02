@@ -41,15 +41,21 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func tweet(tweet: String!, success: @escaping ()->(), failure: @escaping (Error)->()) -> Void {
-        let parameters = ["status" : tweet]
+    func tweet(tweet: String!, inReplyTo: Int?, success: (()->())?, failure: ((Error)->())?) -> Void {
+        
+        var parameters = [String:Any]()
+        parameters["status"] = tweet
+        if let inReplyTo = inReplyTo {
+            parameters["in_reply_to_status_id"] = inReplyTo
+        }
+        
         post("1.1/statuses/update.json",
              parameters: parameters,
              progress: nil,
              success: { (task: URLSessionDataTask, response: Any?) in
-                success()},
+                success?()},
              failure: { (task: URLSessionDataTask?, error: Error) in
-                failure(error)
+                failure?(error)
             }
         )
     }

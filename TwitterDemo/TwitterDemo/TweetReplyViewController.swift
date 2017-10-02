@@ -12,14 +12,29 @@ class TweetReplyViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     
+    var userName: String!
+    var statusID: Int!
+    
     @IBAction func onCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func onPost(_ sender: Any) {
+        let tweetStr = textView.text
+        TwitterClient.sharedInstance?.tweet(tweet: tweetStr, inReplyTo: statusID, success: nil, failure: { (error: Error) in
+            print("Error replying: \(error.localizedDescription)")
+        })
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textView.contentOffset = CGPoint.zero
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         textView.becomeFirstResponder()
-        textView.contentOffset = CGPoint.zero
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -31,13 +46,8 @@ class TweetReplyViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        textView.text = "@\(userName!)"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

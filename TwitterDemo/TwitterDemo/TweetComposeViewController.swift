@@ -53,6 +53,7 @@ class TweetComposeViewController: UIViewController, UITextViewDelegate {
         
         let tweetStr = tweetTextView.text ?? ""
         TwitterClient.sharedInstance?.tweet(tweet: tweetStr,
+                                            inReplyTo: nil,
                                             success: { [weak self] () in
                                                 print("Successfully posted tweet")
                                                 MBProgressHUD.hide(for: (self?.view)!, animated: true)
