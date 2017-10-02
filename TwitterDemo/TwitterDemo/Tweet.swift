@@ -14,12 +14,18 @@ class Tweet: NSObject {
     var creationDate: Date?
     var retweetCount: Int = 0
     var favoriteCount: Int = 0
+    var id: Int = 0
     var user: User?
+    var isRetweeted: Bool = false
+    var isFavorited: Bool = false
     
     init(dictionary: NSDictionary) {
         text = dictionary["text"] as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoriteCount = (dictionary["favourites_count"] as? Int) ?? 0
+        id = (dictionary["id"] as? Int) ?? 0
+        isRetweeted = (dictionary["retweeted"] as? Bool) ?? false
+        isFavorited = (dictionary["favorited"] as? Bool) ?? false
         
         let timestampString = dictionary["created_at"] as? String
         let formatter = DateFormatter()

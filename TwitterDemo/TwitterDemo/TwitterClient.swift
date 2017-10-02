@@ -54,6 +54,32 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func retweet(tweetID: Int!, shouldRetweet: Bool!) -> Void {
+        let param = ["id" : tweetID]
+        let url = shouldRetweet ? "1.1/statuses/retweet/\(tweetID!).json" : "1.1/statuses/unretweet/\(tweetID!).json"
+        
+        post(url,
+             parameters: param,
+             progress: nil,
+             success: nil,
+             failure: { (task: URLSessionDataTask?, error: Error) in
+                print("Error: \(error.localizedDescription)")
+        })
+    }
+    
+    func favorite(tweetID: Int!, shouldFavorite: Bool!) -> Void {
+        let param = ["id" : tweetID]
+        let url = shouldFavorite ? "1.1/favorites/create.json" : "1.1/favorites/destroy.json"
+        
+        post(url,
+             parameters: param,
+             progress: nil,
+             success: nil,
+             failure: { (task: URLSessionDataTask?, error: Error) in
+                print("Error: \(error.localizedDescription)")
+        })
+    }
+    
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json",
             parameters: nil,
