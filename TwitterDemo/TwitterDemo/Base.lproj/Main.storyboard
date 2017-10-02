@@ -468,6 +468,7 @@
                                                     <state key="normal" backgroundImage="reply"/>
                                                     <connections>
                                                         <action selector="onReply:" destination="bUj-mu-ti7" eventType="touchUpInside" id="fIW-uZ-8uq"/>
+                                                        <segue destination="FOD-pr-A8l" kind="presentation" id="kVz-Oi-NTS"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -497,6 +498,11 @@
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reply"/>
+                                <connections>
+                                    <segue destination="FOD-pr-A8l" kind="popoverPresentation" identifier="ReplySegueID" popoverAnchorView="AOP-n0-9UR" id="PM6-tD-te9">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -508,10 +514,88 @@
             </objects>
             <point key="canvasLocation" x="1920" y="925"/>
         </scene>
+        <!--Reply-->
+        <scene sceneID="NE2-wS-i94">
+            <objects>
+                <viewController id="5tf-OF-TCu" customClass="TweetReplyViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MsV-S5-4nZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ysh-jK-lUI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cWv-jm-4Q0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iMo-JR-DGB">
+                                <rect key="frame" x="16" y="84" width="288" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="rbi-yb-4W1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iMo-JR-DGB" firstAttribute="top" secondItem="MsV-S5-4nZ" secondAttribute="bottom" constant="20" id="Lif-Wi-aOz"/>
+                            <constraint firstItem="iMo-JR-DGB" firstAttribute="leading" secondItem="cWv-jm-4Q0" secondAttribute="leadingMargin" id="q7H-Pq-bAf"/>
+                            <constraint firstItem="iMo-JR-DGB" firstAttribute="trailing" secondItem="cWv-jm-4Q0" secondAttribute="trailingMargin" id="wdq-T6-AMj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reply" id="Gjv-ai-2Fi">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="jZC-QS-pcD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DsU-fJ-4FX">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="5tf-OF-TCu" eventType="touchUpInside" id="XXr-dp-OZb"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="8Nt-0i-Uz4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Do7-Es-L4P">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="iMo-JR-DGB" id="Owr-FZ-NGM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hw-CA-Bl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3489" y="925"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dyZ-Bp-oN6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FOD-pr-A8l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2aX-nu-Mu8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5tf-OF-TCu" kind="relationship" relationship="rootViewController" id="bQY-qa-Sr8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m92-S7-nJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2707.5" y="925"/>
+        </scene>
     </scenes>
     <resources>
         <image name="favorite_unfilled" width="16" height="16"/>
         <image name="reply" width="16" height="16"/>
         <image name="retweet_unfilled" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PM6-tD-te9"/>
+    </inferredMetricsTieBreakers>
 </document>
