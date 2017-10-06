@@ -36,7 +36,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Add pan gesture recognizer to the tableview
         let panGR = UIPanGestureRecognizer(target: self, action: #selector(TweetsViewController.onUserPan))
+        panGR.delegate = self
         tableView.addGestureRecognizer(panGR)
+        
         
         // Initialize center points
         mainTableViewCenterWhenNotMoved = tableView.center
@@ -64,6 +66,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func onUserPan(panGestureRecognizer: UIPanGestureRecognizer) -> Void {
