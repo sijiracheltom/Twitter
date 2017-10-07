@@ -23,11 +23,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.removeFromSuperview()
-//        self.view = UIView(frame: tableView.frame)
-//        self.view.addSubview(tableView)
-//        self.view.addSubview(menuTableView)
-//        self.view.bringSubview(toFront: tableView)
+        let navigationBarHeight = navigationController?.navigationBar.bounds.height ?? 0
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let bounds = UIScreen.main.bounds
+        let size = CGSize(width: bounds.size.width, height: bounds.size.height - navigationBarHeight - statusBarHeight)
+        let point = CGPoint(x: 0.0, y: navigationBarHeight)
+        let tableFrame = CGRect(origin: point, size: size)
+        let viewFrame = CGRect(origin: CGPoint.zero, size: bounds.size)
+
+        self.view = UIView(frame: viewFrame)
+        tableView.frame = tableFrame
+        menuTableView.frame = tableFrame
+        
+        self.view.addSubview(tableView)
+        self.view.addSubview(menuTableView)
+        self.view.bringSubview(toFront: tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,7 +49,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         panGR.delegate = self
         tableView.addGestureRecognizer(panGR)
         
-        
         // Initialize center points
         mainTableViewCenterWhenNotMoved = tableView.center
         mainTableViewCenterWhenMoved = tableView.center
@@ -50,12 +59,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         menuTableView.delegate = menuTableViewDataSource
         menuTableView.dataSource = menuTableViewDataSource
         menuTableView.estimatedRowHeight = 200
-        menuTableView.rowHeight = self.view.bounds.height/4
-        
-        // Set up menu as background view for the timeline table
-//        menuTableView.removeFromSuperview()
-//        self.view.addSubview(menuTableView)
-//        tableView.backgroundView = menuTableView
+        menuTableView.rowHeight = tableFrame.height/4
         
         // Initialize a UIRefreshControl
         self.refreshControl = UIRefreshControl()
