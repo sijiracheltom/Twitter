@@ -11,14 +11,12 @@ import UIKit
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var menuTableView: UITableView!
     
     var refreshControl : UIRefreshControl!
     var tweets = [Tweet]()
     var mainTableViewOriginialCenter : CGPoint!
     var mainTableViewCenterWhenMoved: CGPoint!
     var mainTableViewCenterWhenNotMoved: CGPoint!
-    var menuTableViewDataSource : MenuTableViewDataSource!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +35,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         mainTableViewCenterWhenMoved = tableView.center
         mainTableViewCenterWhenMoved.x += 200
         
-        // Initialize menu view
-        menuTableViewDataSource = MenuTableViewDataSource()
-        menuTableView.delegate = menuTableViewDataSource
-        menuTableView.dataSource = menuTableViewDataSource
-        menuTableView.estimatedRowHeight = 200
-        menuTableView.rowHeight = self.view.bounds.height/4
-        
-        // Set up menu as background view for the timeline table
-//        menuTableView.removeFromSuperview()
-        self.view.addSubview(menuTableView)
-//        tableView.backgroundView = menuTableView
-        
         // Initialize a UIRefreshControl
         self.refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -64,7 +50,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("pan detected from sender %@", panGestureRecognizer)
         
         let point = panGestureRecognizer.location(in: self.view)
-        let velocity = panGestureRecognizer.velocity(in: self.view)
         
         if panGestureRecognizer.state == .began {
             mainTableViewOriginialCenter = tableView.center
@@ -72,16 +57,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("Gesture began at: \(point)")
         } else if panGestureRecognizer.state == .changed {
             
-            if velocity.x > 0 {
-                
-                // Only scroll right
-                
-                let translation = panGestureRecognizer.translation(in: self.view)
-                tableView.center = CGPoint(x: mainTableViewOriginialCenter.x + translation.x, y: mainTableViewOriginialCenter.y)
-            }
+            let translation = panGestureRecognizer.translation(in: self.view)
+            tableView.center = CGPoint(x: mainTableViewOriginialCenter.x + translation.x, y: mainTableViewOriginialCenter.y)
             
             print("Gesture changed at: \(point)")
         } else if panGestureRecognizer.state == .ended {
+            
+            let velocity = panGestureRecognizer.velocity(in: self.view)
             
             // moving right
             if velocity.x > 0 {

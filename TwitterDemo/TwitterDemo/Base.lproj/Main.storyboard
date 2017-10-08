@@ -159,41 +159,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuTableView" destination="upu-am-3u0" id="CCY-cQ-TPM"/>
-                        <outlet property="tableView" destination="65V-e6-prK" id="yhX-C8-Wxc"/>
+                        <outlet property="tableView" destination="65V-e6-prK" id="Txg-1l-npZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVe-hS-z0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="upu-am-3u0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="211"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <prototypes>
-                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuOptionCell" rowHeight="95" id="1bB-Of-rGC" customClass="MenuOptionCell" customModule="TwitterDemo" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="28" width="320" height="95"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1bB-Of-rGC" id="B1A-eN-8BX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpP-Sj-xAZ">
-                                        <rect key="frame" x="8" y="35" width="121.5" height="25.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="cpP-Sj-xAZ" firstAttribute="leading" secondItem="B1A-eN-8BX" secondAttribute="leadingMargin" id="RJs-4B-IQO"/>
-                                    <constraint firstItem="cpP-Sj-xAZ" firstAttribute="centerY" secondItem="B1A-eN-8BX" secondAttribute="centerY" id="WmK-go-q26"/>
-                                </constraints>
-                            </tableViewCellContentView>
-                        </tableViewCell>
-                    </prototypes>
-                </tableView>
             </objects>
-            <point key="canvasLocation" x="1875" y="145"/>
+            <point key="canvasLocation" x="1920" y="145"/>
         </scene>
         <!--Compose-->
         <scene sceneID="Y9t-rh-HAm">
