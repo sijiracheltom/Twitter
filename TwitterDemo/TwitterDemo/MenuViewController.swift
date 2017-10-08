@@ -17,24 +17,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var menuTableView: UITableView!
     
     weak var delegate : MenuViewControllerDelegate?        
-    
-    func stringify(menuOption : MenuOptions) -> String! {
-        var str = ""
-        
-        switch menuOption {
-        case .profile:
-            str = "Profile"
-        case .timeLine:
-            str = "Timeline"
-        case .mentions:
-            str = "Mentions"
-        case .totalCount:
-            str = ""
-        }
-        
-        return str
-    }
-    
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         

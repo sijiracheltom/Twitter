@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension                
         
         // Initialize a UIRefreshControl
         self.refreshControl = UIRefreshControl()
@@ -39,6 +39,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func fetchTweets() -> Void {
         TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
+            
+            if self.tweets.count > 0 {
+                self.setNoContentView(enabled: false)
+            } else {
+                self.setNoContentView(enabled: true)
+            }
+            
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             
@@ -46,6 +53,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Error: \(error)")
             self.refreshControl.endRefreshing()
         })
+    }
+    
+    func setNoContentView(enabled : Bool) -> Void {
+        if enabled {
+            tableView.tableFooterView = tableView.dequeueReusableCell(withIdentifier: "NoContentCell");
+        } else {
+            tableView.tableFooterView = nil
+        }
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
@@ -62,16 +77,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell        
         cell.tweet = tweets[indexPath.row]
         return cell
-    }
+    }    
 
-    @IBAction func onSignOut(_ sender: Any) {
-        TwitterClient.sharedInstance?.logout()
-    }
-
-    @IBAction func onComposeTweet(_ sender: Any) {
-        self.performSegue(withIdentifier: "TweetComposeSegueID", sender: nil)
-    }
-    
     
     // MARK: - Navigation
 
@@ -80,12 +87,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let nextC = segue.destination
-        
-        if nextC is UINavigationController {
-            let composeVC = (nextC as! UINavigationController).topViewController as! TweetComposeViewController
-            composeVC.user = User.currentUser
-        } else if nextC is TweetDetailViewController {
+        let nextC = segue.destination        
+        if nextC is TweetDetailViewController {
             let tweetCell = sender as! TweetCell
             let indexpath = self.tableView.indexPath(for: tweetCell)!
             let tweet = self.tweets[indexpath.row] as Tweet

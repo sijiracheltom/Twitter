@@ -12,6 +12,7 @@
 		743697181F89AB00005E19E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743697171F89AB00005E19E3 /* MainViewController.swift */; };
 		7436971A1F89B0D5005E19E3 /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743697191F89B0D5005E19E3 /* MenuOptionCell.swift */; };
 		7436971C1F89B110005E19E3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7436971B1F89B110005E19E3 /* MenuViewController.swift */; };
+		7436971E1F89FCF1005E19E3 /* NoContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7436971D1F89FCF1005E19E3 /* NoContentCell.swift */; };
 		74B050681F801F6700E6F966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B050671F801F6700E6F966 /* LoginViewController.swift */; };
 		74B0506D1F803A0E00E6F966 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B0506C1F803A0E00E6F966 /* User.swift */; };
 		74B0506F1F803A1A00E6F966 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B0506E1F803A1A00E6F966 /* Tweet.swift */; };
@@ -58,6 +59,7 @@
 		743697171F89AB00005E19E3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		743697191F89B0D5005E19E3 /* MenuOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionCell.swift; sourceTree = "<group>"; };
 		7436971B1F89B110005E19E3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7436971D1F89FCF1005E19E3 /* NoContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoContentCell.swift; sourceTree = "<group>"; };
 		74B050671F801F6700E6F966 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		74B0506C1F803A0E00E6F966 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		74B0506E1F803A1A00E6F966 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				74C3DBAA1F81AD0D007E68F0 /* RetweetFavoriteCell.swift */,
 				74C3DBAC1F81AD1E007E68F0 /* ControlsCell.swift */,
 				743697191F89B0D5005E19E3 /* MenuOptionCell.swift */,
+				7436971D1F89FCF1005E19E3 /* NoContentCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				74B050781F81607600E6F966 /* Utilities.swift in Sources */,
 				7436971A1F89B0D5005E19E3 /* MenuOptionCell.swift in Sources */,
 				74B0506F1F803A1A00E6F966 /* Tweet.swift in Sources */,
+				7436971E1F89FCF1005E19E3 /* NoContentCell.swift in Sources */,
 				74C3DBA71F81A451007E68F0 /* TweetDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

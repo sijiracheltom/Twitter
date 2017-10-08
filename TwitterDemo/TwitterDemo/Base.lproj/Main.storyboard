@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="145"/>
+            <point key="canvasLocation" x="-379" y="127"/>
         </scene>
         <!--Home-->
         <scene sceneID="ogQ-Eb-urh">
@@ -133,39 +133,41 @@
                                     <segue destination="XMb-6m-c2m" kind="show" id="ykU-GL-usM"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoContentCell" id="SAa-7F-2YT" customClass="NoContentCell" customModule="TwitterDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="207" width="320" height="179"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SAa-7F-2YT" id="lYK-Se-v5p">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="179"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No content yet!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XzT-nA-yTx">
+                                            <rect key="frame" x="75" y="74.5" width="170.5" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XzT-nA-yTx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lYK-Se-v5p" secondAttribute="leadingMargin" constant="8" id="3Rg-2c-Hj5"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XzT-nA-yTx" secondAttribute="bottom" constant="8" id="4wD-8G-k6J"/>
+                                        <constraint firstItem="XzT-nA-yTx" firstAttribute="centerX" secondItem="lYK-Se-v5p" secondAttribute="centerX" id="7Ma-0e-h1p"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="XzT-nA-yTx" secondAttribute="trailing" constant="8" id="e8a-dZ-JcD"/>
+                                        <constraint firstItem="XzT-nA-yTx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lYK-Se-v5p" secondAttribute="topMargin" constant="8" id="mCf-nc-dNg"/>
+                                        <constraint firstItem="XzT-nA-yTx" firstAttribute="centerY" secondItem="lYK-Se-v5p" secondAttribute="centerY" id="o7Z-xx-Zif"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Home" id="l0X-rs-G8r">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="grV-38-9sX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aUd-A3-01u">
-                                <rect key="frame" x="16" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="onSignOut:" destination="qnp-Ku-cpH" eventType="touchUpInside" id="S8Z-7g-0hg"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YQ3-OW-8l6">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lns-vk-qRn">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New"/>
-                                <connections>
-                                    <action selector="onComposeTweet:" destination="qnp-Ku-cpH" eventType="touchUpInside" id="F50-lZ-WHu"/>
-                                    <segue destination="2Q4-Ib-PUP" kind="presentation" identifier="TweetComposeSegueID" id="uiP-eF-d0g"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Home" id="l0X-rs-G8r"/>
                     <connections>
                         <outlet property="tableView" destination="65V-e6-prK" id="Txg-1l-npZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVe-hS-z0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920" y="144.71830985915494"/>
+            <point key="canvasLocation" x="952.5" y="1168.3098591549297"/>
         </scene>
         <!--Compose-->
         <scene sceneID="Y9t-rh-HAm">
@@ -270,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="491-jv-b8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3751.875" y="177.5"/>
+            <point key="canvasLocation" x="3784" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lIX-vP-3rH">
@@ -288,7 +290,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9k0-lb-WaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="922.5" y="145"/>
+            <point key="canvasLocation" x="-128" y="1168"/>
         </scene>
         <!--Main-->
         <scene sceneID="zrm-iN-e0g">
@@ -327,7 +329,29 @@
                             <constraint firstItem="LfH-6c-vSw" firstAttribute="top" secondItem="dPf-ah-dgb" secondAttribute="bottom" id="x2e-ia-NPG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="GmM-Wj-v9g"/>
+                    <navigationItem key="navigationItem" title="Main" id="GmM-Wj-v9g">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="HeB-QG-JR3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0iF-gO-444">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="onSignOut:" destination="Mia-zM-ruT" eventType="touchUpInside" id="u5i-Pb-3sS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="75l-1P-2Z1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QlG-4Y-aFM">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New"/>
+                                <connections>
+                                    <action selector="onCompose:" destination="Mia-zM-ruT" eventType="touchUpInside" id="zEh-zP-ooI"/>
+                                    <segue destination="2Q4-Ib-PUP" kind="presentation" identifier="TweetComposeSegueID" id="r9J-1F-k2w"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="dPf-ah-dgb" id="wrJ-j9-zob"/>
                         <outlet property="leadingContentViewAttribute" destination="QEv-Fb-XY7" id="PyU-5Z-YLk"/>
@@ -341,7 +365,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="928.125" y="1170"/>
+            <point key="canvasLocation" x="1753" y="127"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="g6d-qf-rMt">
@@ -398,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0F-wK-zca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="2155"/>
+            <point key="canvasLocation" x="-1446" y="802"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Ku-Mf-dZu">
@@ -416,7 +440,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eH8-dD-ET7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2754.375" y="177.5"/>
+            <point key="canvasLocation" x="2754" y="127"/>
         </scene>
         <!--Tweet-->
         <scene sceneID="sdX-8b-gg7">
@@ -702,7 +726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hw-CA-Bl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4459" y="1170"/>
+            <point key="canvasLocation" x="3634" y="1166"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dyZ-Bp-oN6">
@@ -720,7 +744,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m92-S7-nJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3234" y="1170"/>
+            <point key="canvasLocation" x="2835" y="1167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MYs-ML-viW">
@@ -738,7 +762,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtT-j2-HS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69.375" y="1170"/>
+            <point key="canvasLocation" x="761" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lhc-6W-lcm">
@@ -756,7 +780,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80G-FD-TOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="2155"/>
+            <point key="canvasLocation" x="-2426" y="802"/>
         </scene>
     </scenes>
     <resources>

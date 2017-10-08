@@ -27,13 +27,16 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         let homeNC = storyboard.instantiateViewController(withIdentifier: "HomeNavigationControllerID") as? UINavigationController
         
         if let homeVC = homeNC?.topViewController as? HomeViewController {
-            VCsDict[MenuOptions.timeLine] = homeVC
+            let homeOption = MenuOptions.timeLine
+            
+            VCsDict[homeOption] = homeVC
             
             self.addChildViewController(homeVC)
             contentView.addSubview(homeVC.view)
             homeVC.didMove(toParentViewController: self)
             
             currentContentVC = homeVC
+            navigationItem.title = stringify(menuOption: homeOption)
         }
         
         // Profile VC
@@ -61,7 +64,10 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             originalLeftMargin = leadingContentViewAttribute.constant
             
         } else if sender.state == .changed {
-            leadingContentViewAttribute.constant = originalLeftMargin + translation.x
+            let newLeftMargin = originalLeftMargin + translation.x
+            if newLeftMargin > 0 {
+                leadingContentViewAttribute.constant = newLeftMargin
+            }
             
         } else if sender.state == .ended {
             // moving right
@@ -91,6 +97,14 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         })
     }
     
+    @IBAction func onSignOut(_ sender: Any) {
+        TwitterClient.sharedInstance?.logout()
+    }
+    
+    @IBAction func onCompose(_ sender: Any) {
+        self.performSegue(withIdentifier: "TweetComposeSegueID", sender: nil)
+    }
+    
     // MARK:- MenuViewControllerDelegate
     
     func menuViewController(_menuViewController: MenuViewController, didSelectOption option: MenuOptions) {
@@ -110,16 +124,21 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         }
         
         animate(toOrigin: true)
+        navigationItem.title = stringify(menuOption: option)
     }
     
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        
+        let nextC = segue.destination
+        if nextC is UINavigationController {
+            let composeVC = (nextC as! UINavigationController).topViewController as! TweetComposeViewController
+            composeVC.user = User.currentUser
+        }
     }
-    */
 
 }

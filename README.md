@@ -34,7 +34,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Used child/parent functionality to ensure the VC lifecycle methods are called appropriately.
-- [] Add a default view if there is no content in a VC.
+- [x] Add a default view if there is no content in a VC.
 
 
 ## Video Walkthrough
