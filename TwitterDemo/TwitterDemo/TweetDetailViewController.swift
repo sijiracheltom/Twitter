@@ -61,24 +61,23 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let replyNC = segue.destination
-        if replyNC is UINavigationController {
-            let replyVC = (replyNC as! UINavigationController).topViewController as! TweetReplyViewController
+        let nextC = segue.destination
+        if nextC is UINavigationController {
+            let replyVC = (nextC as! UINavigationController).topViewController as! TweetReplyViewController
             replyVC.userName = tweet.user?.screenname ?? ""
             replyVC.statusID = tweet.id
         }
-        // provide the user name
+        else if nextC is ProfileViewController {
+            if sender is UITapGestureRecognizer {
+                (nextC as! ProfileViewController).user = tweet.user
+            }
+        }
     }
-
+    
 }

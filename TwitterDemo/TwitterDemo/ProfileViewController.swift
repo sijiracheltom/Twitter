@@ -12,8 +12,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
 
-    var user: User!
     var tweets = [Tweet]()
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             tableView.backgroundColor = backgroundColor
         }
         
-        fetchUserTimeLine()
+        fetchUserTimeLine(forUserID: user.id)
     }
     
-    func fetchUserTimeLine() -> Void {
-        TwitterClient.sharedInstance?.userTimeline(success: { (tweets: [Tweet]) in
+    func fetchUserTimeLine(forUserID: Int!) -> Void {
+        TwitterClient.sharedInstance?.userTimeline(_userID: forUserID, success: { (tweets: [Tweet]) in
             self.tweets = tweets
             self.tableView.reloadData()
         }, failure: { (error: Error) in

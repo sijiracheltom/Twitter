@@ -19,6 +19,7 @@ class User: NSObject {
     var following : Int!
     var headerImageURL : URL?
     var headerBackgroundColor: UIColor?
+    var id : Int!
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -38,6 +39,7 @@ class User: NSObject {
                 headerBackgroundColor = headerColor
             }
         }
+        id = dictionary["id"] as! Int
     }        
     
     static let userDataKey = "currentUserData"

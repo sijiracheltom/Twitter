@@ -44,7 +44,6 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         if let profileVC = profileNC?.topViewController as? ProfileViewController {
             
             VCsDict[MenuOptions.profile] = profileVC
-            profileVC.user = User.currentUser
         }
         
         // Set up menu view
@@ -112,6 +111,10 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         let VC = VCsDict[option]
         
         if let VC = VC {
+            if option == .profile {
+                (VC as! ProfileViewController).user = User.currentUser
+            }
+            
             if let currentContentVC = currentContentVC {
                 currentContentVC.willMove(toParentViewController: nil)
                 currentContentVC.removeFromParentViewController()

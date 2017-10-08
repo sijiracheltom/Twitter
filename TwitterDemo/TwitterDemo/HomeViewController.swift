@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
 
     @IBOutlet var tableView: UITableView!
     
@@ -82,7 +82,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
         // Get the new view controller using segue.destinationViewController.
@@ -95,7 +95,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let tweet = self.tweets[indexpath.row] as Tweet
             
             (nextC as! TweetDetailViewController).tweet = tweet
-        }        
+        }
+            
+        // Profile VC nav controller
+        else if nextC is UINavigationController {
+            if let profileVC = (nextC as! UINavigationController).topViewController as? ProfileViewController {
+                if sender is UITapGestureRecognizer {
+                    
+                    // Which cell was tapped?
+                    let location = (sender as! UITapGestureRecognizer).location(in: tableView)
+                    let indexpath = tableView.indexPathForRow(at: location)
+                    let tweet = tweets[indexpath?.row ?? 0]
+                    
+                    profileVC.user = tweet.user
+                }
+            }
+        }
+        // Profile VC
+        else if nextC is ProfileViewController {
+            if sender is UITapGestureRecognizer {
+                
+                // Which cell was tapped?
+                let location = (sender as! UITapGestureRecognizer).location(in: tableView)
+                let indexpath = tableView.indexPathForRow(at: location)
+                let tweet = tweets[indexpath?.row ?? 0]
+                
+                (nextC as! ProfileViewController).user = tweet.user
+            }
+        }
+        
     }
     
 

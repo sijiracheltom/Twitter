@@ -29,9 +29,15 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func userTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) -> () {
+    func userTimeline(_userID userID: Int?, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) -> () {
+        
+        var parameters = [String:Any]()
+        if let userID = userID {
+            parameters["user_id"] = userID
+        }
+        
         get("1.1/statuses/user_timeline.json",
-            parameters: nil,
+            parameters: parameters,
             progress: nil,
             success: { (task: URLSessionDataTask, response : Any?) in
                 let dictionaries = response as! [NSDictionary]
