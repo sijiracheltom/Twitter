@@ -9,7 +9,7 @@
 import UIKit
 
 enum MenuOptions : Int {
-    case profile = 0
+    case profile = 1
     case timeLine
     case mentions
     case account
