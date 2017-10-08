@@ -1,8 +1,54 @@
-# Project 3 - *TwitterDemo*
+# Project 3 & 4 - *TwitterDemo*
 
 **TwitterDemo** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **12** hours spent in total
+Part 2 - Time spent: **X** hours spent in total
+
+## User Stories
+
+The following **required** functionality is completed:
+
+- [ ] Hamburger menu
+   - [ ] Dragging anywhere in the view should reveal the menu.
+   - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
+   - [ ] The menu can look similar to the example or feel free to take liberty with the UI.
+- [ ] Profile page
+   - [ ] Contains the user header view
+   - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
+- [ ] Home Timeline
+   - [ ] Tapping on a user image should bring up that user's profile page
+
+The following **optional** features are implemented:
+
+- [ ] Profile Page
+   - [ ] Implement the paging view for the user description.
+   - [ ] As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
+   - [ ] Pulling down the profile page should blur and resize the header image.
+- [ ] Account switching
+   - [ ] Long press on tab bar to bring up Account view with animation
+   - [ ] Tap account to switch to
+   - [ ] Include a plus button to Add an Account
+   - [ ] Swipe to delete an account
+
+
+The following **additional** features are implemented:
+
+- [x] Used child/parent functionality to ensure the VC lifecycle methods are called appropriately.
+
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
+
+
+
+Part 1 - Time spent: **12** hours spent in total
 
 ## User Stories
 
