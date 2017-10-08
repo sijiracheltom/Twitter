@@ -41,6 +41,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         menuTableView.delegate = self
         menuTableView.dataSource = self
+        
+        menuTableView.estimatedRowHeight = 200
+        menuTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
