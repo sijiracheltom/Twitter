@@ -23,12 +23,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.removeFromSuperview()
-//        self.view = UIView(frame: tableView.frame)
-//        self.view.addSubview(tableView)
-//        self.view.addSubview(menuTableView)
-//        self.view.bringSubview(toFront: tableView)
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
@@ -52,7 +46,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Set up menu as background view for the timeline table
 //        menuTableView.removeFromSuperview()
-//        self.view.addSubview(menuTableView)
+        self.view.addSubview(menuTableView)
 //        tableView.backgroundView = menuTableView
         
         // Initialize a UIRefreshControl
