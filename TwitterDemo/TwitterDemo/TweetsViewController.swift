@@ -8,15 +8,12 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     
     var refreshControl : UIRefreshControl!
     var tweets = [Tweet]()
-    var mainTableViewOriginialCenter : CGPoint!
-    var mainTableViewCenterWhenMoved: CGPoint!
-    var mainTableViewCenterWhenNotMoved: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +22,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Add pan gesture recognizer to the tableview
-        let panGR = UIPanGestureRecognizer(target: self, action: #selector(TweetsViewController.onUserPan))
-        tableView.addGestureRecognizer(panGR)
-        
-        // Initialize center points
-        mainTableViewCenterWhenNotMoved = tableView.center
-        mainTableViewCenterWhenMoved = tableView.center
-        mainTableViewCenterWhenMoved.x += 200
         
         // Initialize a UIRefreshControl
         self.refreshControl = UIRefreshControl()
@@ -44,52 +32,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
-    }
-    
-    func onUserPan(panGestureRecognizer: UIPanGestureRecognizer) -> Void {
-        print("pan detected from sender %@", panGestureRecognizer)
-        
-        let point = panGestureRecognizer.location(in: self.view)
-        
-        if panGestureRecognizer.state == .began {
-            mainTableViewOriginialCenter = tableView.center
-            
-            print("Gesture began at: \(point)")
-        } else if panGestureRecognizer.state == .changed {
-            
-            let translation = panGestureRecognizer.translation(in: self.view)
-            tableView.center = CGPoint(x: mainTableViewOriginialCenter.x + translation.x, y: mainTableViewOriginialCenter.y)
-            
-            print("Gesture changed at: \(point)")
-        } else if panGestureRecognizer.state == .ended {
-            
-            let velocity = panGestureRecognizer.velocity(in: self.view)
-            
-            // moving right
-            if velocity.x > 0 {
-                UIView.animate(withDuration: 0.2,
-                               delay: 0,
-                               usingSpringWithDamping: 1.0,
-                               initialSpringVelocity: 0,
-                               options: .curveEaseInOut,
-                               animations: {
-                                self.tableView.center = self.mainTableViewCenterWhenMoved
-                },
-                               completion: nil)
-            } else {
-                // moving left
-                UIView.animate(withDuration: 0.2,
-                               delay: 0,
-                               usingSpringWithDamping: 1.0,
-                               initialSpringVelocity: 0,
-                               options: .curveEaseInOut,
-                               animations: {
-                                self.tableView.center = self.mainTableViewCenterWhenNotMoved
-                })
-            }
-            
-            print("Gesture ended at: \(point)")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
