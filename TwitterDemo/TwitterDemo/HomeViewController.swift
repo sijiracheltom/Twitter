@@ -51,6 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }, failure: { (error: Error) in
             print("Error: \(error)")
+            self.setNoContentView(enabled: true)
             self.refreshControl.endRefreshing()
         })
     }
