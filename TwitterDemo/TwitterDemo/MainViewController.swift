@@ -85,7 +85,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
                        delay: 0,
                        usingSpringWithDamping: 1.0,
                        initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
+                       options: .curveEaseIn,
                        animations: {
                         if toOrigin {
                             self.leadingContentViewAttribute.constant = 0
