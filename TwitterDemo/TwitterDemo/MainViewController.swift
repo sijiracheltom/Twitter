@@ -40,16 +40,17 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         }
         
         // Profile VC
-        let homeNC1 = storyboard.instantiateViewController(withIdentifier: "HomeNavigationControllerID") as? UINavigationController
-        
-        if let homeVC1 = homeNC1?.topViewController as? HomeViewController {
-            VCsDict[MenuOptions.profile] = homeVC1
+        let profileNC = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationControllerID") as? UINavigationController
+        if let profileVC = profileNC?.topViewController as? ProfileViewController {
+            
+            VCsDict[MenuOptions.profile] = profileVC
+            profileVC.user = User.currentUser
         }
         
+        // Set up menu view
         let menuVC = storyboard.instantiateViewController(withIdentifier: "MenuViewControllerID") as! MenuViewController
         menuVC.delegate = self
         
-        // Set up menu view
         self.addChildViewController(menuVC)
         menuView.addSubview(menuVC.view)
         menuVC.didMove(toParentViewController: self)

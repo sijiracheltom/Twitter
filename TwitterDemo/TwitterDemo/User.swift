@@ -8,12 +8,17 @@
 
 import UIKit
 
+
 class User: NSObject {
     var name : String?
     var screenname: String?
     var profileURL: URL?
     var tagline: String?
     var dictionary: NSDictionary?
+    var followers : Int!
+    var following : Int!
+    var headerImageURL : URL?
+    var headerBackgroundColor: UIColor?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -23,7 +28,17 @@ class User: NSObject {
             profileURL = URL(string: url)
         }
         tagline = dictionary["description"] as? String
-    }
+        followers = (dictionary["followers_count"] as? Int) ?? 0
+        following = (dictionary["friends_count"] as? Int) ?? 0
+        if let headerURL = dictionary["profile_background_image_url_https"] as? String {
+            headerImageURL = URL(string: headerURL)
+        }
+        if let profileBackgroundColorStr = dictionary["profile_background_color"] as? String {
+            if let headerColor = UIColorFromRGB(rgbStr: profileBackgroundColorStr) {
+                headerBackgroundColor = headerColor
+            }
+        }
+    }        
     
     static let userDataKey = "currentUserData"
     static private var _currentUser: User?

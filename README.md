@@ -12,8 +12,8 @@ The following **required** functionality is completed:
    - [x] Dragging anywhere in the view should reveal the menu.
    - [x] The menu should include links to your profile, the home timeline, and the mentions view.
    - [x] The menu can look similar to the example or feel free to take liberty with the UI.
-- [ ] Profile page
-   - [ ] Contains the user header view
+- [x] Profile page
+   - [x] Contains the user header view
    - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
 - [ ] Home Timeline
    - [ ] Tapping on a user image should bring up that user's profile page
@@ -35,7 +35,8 @@ The following **additional** features are implemented:
 
 - [x] Used child/parent functionality to ensure the VC lifecycle methods are called appropriately.
 - [x] Add a default view if there is no content in a VC.
-
+- [x] Used XIBs to avoid duplicated code and UI.
+- [x] Set the profile’s background color based on what the API returns
 
 ## Video Walkthrough
 

@@ -89,7 +89,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="8"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
@@ -172,7 +172,7 @@
         <!--Profile-->
         <scene sceneID="bcn-4V-Px1">
             <objects>
-                <viewController id="APF-qX-IFo" sceneMemberID="viewController">
+                <viewController id="APF-qX-IFo" customClass="ProfileViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="448-PU-But"/>
                         <viewControllerLayoutGuide type="bottom" id="dtw-bU-Y0y"/>
@@ -186,11 +186,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="228" id="NUS-iU-ELk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileHeaderCell" rowHeight="228" id="NUS-iU-ELk" customClass="ProfileHeaderCell" customModule="TwitterDemo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NUS-iU-ELk" id="fQl-Ql-O90">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="227.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8gx-MA-tVc">
@@ -205,6 +205,12 @@
                                                         <constraint firstAttribute="height" constant="50" id="pr1-9T-Ado"/>
                                                         <constraint firstAttribute="width" constant="50" id="qDi-R4-xNG"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@sijiracheltom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8e-ge-XpZ">
                                                     <rect key="frame" x="130.5" y="111" width="101" height="18"/>
@@ -274,6 +280,15 @@
                                                 <constraint firstItem="T5P-fF-fdk" firstAttribute="bottom" secondItem="K7V-u0-JOd" secondAttribute="bottom" id="xZO-1d-ZMP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="gSh-dK-EDb" id="IKv-hq-C3D"/>
+                                            <outlet property="followersCountLabel" destination="3Cd-xH-Ukm" id="Gik-VM-1k9"/>
+                                            <outlet property="followingCountLabel" destination="K7V-u0-JOd" id="JcS-nA-bib"/>
+                                            <outlet property="headerImageView" destination="8gx-MA-tVc" id="4Vc-eY-RLv"/>
+                                            <outlet property="profileImageView" destination="mxx-Db-J36" id="KNq-np-lPD"/>
+                                            <outlet property="screenNameLabel" destination="w3T-gQ-TWg" id="leJ-lW-LrS"/>
+                                            <outlet property="userNameLabel" destination="k8e-ge-XpZ" id="YbD-gC-RXc"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -281,6 +296,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="CWX-8f-Gs0"/>
+                    <connections>
+                        <outlet property="tableView" destination="jUn-lE-CPY" id="4qB-pl-5wy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-k1-M46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -902,7 +920,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ab2-9H-awf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RXT-F3-s1h" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigationControllerID" automaticallyAdjustsScrollViewInsets="NO" id="RXT-F3-s1h" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QhN-cb-xLC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
