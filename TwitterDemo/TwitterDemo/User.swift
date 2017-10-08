@@ -18,6 +18,7 @@ class User: NSObject {
     var followers : Int!
     var following : Int!
     var headerImageURL : URL?
+    var headerBackgroundURL : URL?
     var headerBackgroundColor: UIColor?
     var id : Int!
     
@@ -31,8 +32,11 @@ class User: NSObject {
         tagline = dictionary["description"] as? String
         followers = (dictionary["followers_count"] as? Int) ?? 0
         following = (dictionary["friends_count"] as? Int) ?? 0
-        if let headerURL = dictionary["profile_background_image_url_https"] as? String {
-            headerImageURL = URL(string: headerURL)
+        if let headerBgroundURL = dictionary["profile_background_image_url_https"] as? String {
+            headerBackgroundURL = URL(string: headerBgroundURL)
+        }
+        if let headerURL = dictionary["profile_banner_url"] as? String {
+            headerImageURL = URL(string: "\(headerURL)/300x100")
         }
         if let profileBackgroundColorStr = dictionary["profile_background_color"] as? String {
             if let headerColor = UIColorFromRGB(rgbStr: profileBackgroundColorStr) {

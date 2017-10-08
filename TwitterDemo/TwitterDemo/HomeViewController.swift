@@ -42,10 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if self.tweets.count > 0 {
                 self.setNoContentView(enabled: false)
-            } else {
-                self.setNoContentView(enabled: true)
-            }
-            
+            }            
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             

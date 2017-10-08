@@ -68,8 +68,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! TweetTableViewCell
-        performSegue(withIdentifier: "ProfileToDetailSegueID", sender: cell)
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell is TweetTableViewCell {
+            performSegue(withIdentifier: "ProfileToDetailSegueID", sender: cell)
+        }
     }
     
     

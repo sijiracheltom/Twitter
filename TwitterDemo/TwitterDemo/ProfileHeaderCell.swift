@@ -28,6 +28,8 @@ class ProfileHeaderCell: UITableViewCell {
             descriptionLabel.text = user.tagline ?? ""
             if let headerURL = user.headerImageURL {
                 headerImageView.setImageWith(headerURL)
+            } else if let backgroundURL = user.headerBackgroundURL {
+                headerImageView.setImageWith(backgroundURL)
             }
             followingCountLabel.text = String(user.following)
             followersCountLabel.text = String(user.followers)
