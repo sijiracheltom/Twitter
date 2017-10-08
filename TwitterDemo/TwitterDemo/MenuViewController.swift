@@ -43,6 +43,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         menuTableView.estimatedRowHeight = 200
         menuTableView.rowHeight = UITableViewAutomaticDimension
+        
+        menuTableView.tableFooterView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize.zero))
+        menuTableView.backgroundColor = UIColor(red: 0/255.0, green: 167/255.0, blue: 250/255.0, alpha: 1.0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +54,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOptionCell", for: indexPath) as! MenuOptionCell
-        cell.menuOptionName.text = stringify(menuOption: MenuOptions(rawValue: indexPath.row)!)
+        cell.menuOptionName.text = stringify(menuOption: MenuOptions(rawValue: indexPath.row)!)        
         
         return cell
     }

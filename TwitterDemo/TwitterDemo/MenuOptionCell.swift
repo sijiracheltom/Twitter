@@ -15,6 +15,9 @@ class MenuOptionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        backgroundColor = UIColor(red: 0/255.0, green: 167/255.0, blue: 250/255.0, alpha: 1.0)
+        selectionStyle = UITableViewCellSelectionStyle.none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

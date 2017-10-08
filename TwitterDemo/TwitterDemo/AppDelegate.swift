@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Customize navigation bar globally
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
-        UINavigationBar.appearance().barStyle = UIBarStyle.blackOpaque
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0/255.0, green: 167/255.0, blue: 250/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barStyle = UIBarStyle.black
         
         return true
     }
