@@ -27,11 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
-        tableView.insertSubview(refreshControl, at: 0)
-        
-        navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
+        tableView.insertSubview(refreshControl, at: 0)        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,7 +9,7 @@ Part 2 - Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 - [ ] Hamburger menu
-   - [ ] Dragging anywhere in the view should reveal the menu.
+   - [x] Dragging anywhere in the view should reveal the menu.
    - [ ] The menu should include links to your profile, the home timeline, and the mentions view.
    - [ ] The menu can look similar to the example or feel free to take liberty with the UI.
 - [ ] Profile page
@@ -34,6 +34,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Used child/parent functionality to ensure the VC lifecycle methods are called appropriately.
+- [] Add a default view if there is no content in a VC.
 
 
 ## Video Walkthrough

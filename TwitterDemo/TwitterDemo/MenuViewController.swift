@@ -8,16 +8,15 @@
 
 import UIKit
 
+protocol MenuViewControllerDelegate : NSObjectProtocol {
+    func menuViewController(_menuViewController : MenuViewController, didSelectOption option: MenuOptions)
+}
+
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var menuTableView: UITableView!
     
-    enum MenuOptions : Int {
-        case profile = 0
-        case timeLine
-        case mentions
-        case totalCount
-    }
+    weak var delegate : MenuViewControllerDelegate?        
     
     func stringify(menuOption : MenuOptions) -> String! {
         var str = ""
@@ -52,9 +51,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOptionCell", for: indexPath) as! MenuOptionCell
-        cell.menuOptionName.text = stringify(menuOption: MenuViewController.MenuOptions(rawValue: indexPath.row)!)
+        cell.menuOptionName.text = stringify(menuOption: MenuOptions(rawValue: indexPath.row)!)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        delegate?.menuViewController(_menuViewController: self, didSelectOption: MenuOptions(rawValue: indexPath.row)!)
     }
 
     /*

@@ -30,10 +30,6 @@ class TweetDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10.0))
-        
-        navigationController?.navigationBar.barStyle = UIBarStyle.blackOpaque
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

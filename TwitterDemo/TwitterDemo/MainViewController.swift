@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-    var VCs = [UIViewController]()
+class MainViewController: UIViewController, MenuViewControllerDelegate {
+    var VCsDict = [MenuOptions : UIViewController]()
     var originalLeftMargin : CGFloat!
+    var currentContentVC : UIViewController!
 
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -21,17 +22,29 @@ class MainViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        
+        // Home time line VC
         let homeNC = storyboard.instantiateViewController(withIdentifier: "HomeNavigationControllerID") as? UINavigationController
         
         if let homeVC = homeNC?.topViewController as? HomeViewController {
-            VCs.append(homeVC)
+            VCsDict[MenuOptions.timeLine] = homeVC
             
             self.addChildViewController(homeVC)
             contentView.addSubview(homeVC.view)
-            homeVC.didMove(toParentViewController: self)            
+            homeVC.didMove(toParentViewController: self)
+            
+            currentContentVC = homeVC
+        }
+        
+        // Profile VC
+        let homeNC1 = storyboard.instantiateViewController(withIdentifier: "HomeNavigationControllerID") as? UINavigationController
+        
+        if let homeVC1 = homeNC1?.topViewController as? HomeViewController {
+            VCsDict[MenuOptions.profile] = homeVC1
         }
         
         let menuVC = storyboard.instantiateViewController(withIdentifier: "MenuViewControllerID") as! MenuViewController
+        menuVC.delegate = self
         
         // Set up menu view
         self.addChildViewController(menuVC)
@@ -53,26 +66,50 @@ class MainViewController: UIViewController {
         } else if sender.state == .ended {
             // moving right
             if velocity.x > 0 {
-                UIView.animate(withDuration: 0.3,
-                               delay: 0,
-                               usingSpringWithDamping: 1.0,
-                               initialSpringVelocity: 0,
-                               options: .curveEaseInOut,
-                               animations: {
-                                self.leadingContentViewAttribute.constant = self.view.frame.size.width - 100
-                })
+                animate(toOrigin: false)
             } else {
                 // moving left
-                UIView.animate(withDuration: 0.3,
-                               delay: 0,
-                               usingSpringWithDamping: 1.0,
-                               initialSpringVelocity: 0,
-                               options: .curveEaseInOut,
-                               animations: {
-                                self.leadingContentViewAttribute.constant = 0
-                })
+                animate(toOrigin: true)
             }
         }
+    }
+    
+    func animate(toOrigin : Bool) -> Void {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       usingSpringWithDamping: 1.0,
+                       initialSpringVelocity: 0,
+                       options: .curveEaseInOut,
+                       animations: {
+                        if toOrigin {
+                            self.leadingContentViewAttribute.constant = 0
+                        } else {
+                            self.leadingContentViewAttribute.constant = self.view.frame.size.width - 100
+                        }
+                        
+                        self.view.layoutIfNeeded()
+        })
+    }
+    
+    // MARK:- MenuViewControllerDelegate
+    
+    func menuViewController(_menuViewController: MenuViewController, didSelectOption option: MenuOptions) {
+        let VC = VCsDict[option]
+        
+        if let VC = VC {
+            if let currentContentVC = currentContentVC {
+                currentContentVC.willMove(toParentViewController: nil)
+                currentContentVC.removeFromParentViewController()
+            }
+            
+            self.addChildViewController(VC)
+            contentView.addSubview(VC.view)
+            VC.didMove(toParentViewController: self)
+            
+            currentContentVC = VC
+        }
+        
+        animate(toOrigin: true)
     }
     
     /*
