@@ -307,11 +307,12 @@
                     <navigationItem key="navigationItem" title="Profile" id="CWX-8f-Gs0"/>
                     <connections>
                         <outlet property="tableView" destination="jUn-lE-CPY" id="4qB-pl-5wy"/>
+                        <segue destination="XMb-6m-c2m" kind="show" identifier="ProfileToDetailSegueID" id="1x6-bK-gyF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGH-k1-M46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918.75" y="2037.6760563380283"/>
+            <point key="canvasLocation" x="992" y="2038"/>
         </scene>
         <!--Compose-->
         <scene sceneID="Y9t-rh-HAm">
@@ -834,7 +835,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iMo-JR-DGB">
-                                <rect key="frame" x="16" y="84" width="288" height="160"/>
+                                <rect key="frame" x="16" y="40" width="288" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="rbi-yb-4W1"/>
@@ -961,7 +962,8 @@
         <image name="retweet_unfilled" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1x6-bK-gyF"/>
+        <segue reference="dzS-92-vfS"/>
         <segue reference="PM6-tD-te9"/>
-        <segue reference="O5O-ZZ-v98"/>
     </inferredMetricsTieBreakers>
 </document>

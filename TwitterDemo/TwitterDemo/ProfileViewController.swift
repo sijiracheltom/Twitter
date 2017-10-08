@@ -66,14 +66,28 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell        
     }
-    /*
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TweetTableViewCell
+        performSegue(withIdentifier: "ProfileToDetailSegueID", sender: cell)
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let nextC = segue.destination
+        if nextC is TweetDetailViewController {
+            let tweetCell = sender as! TweetTableViewCell
+            let indexpath = self.tableView.indexPath(for: tweetCell)!
+            let tweet = self.tweets[indexpath.row - 1] as Tweet
+            
+            (nextC as! TweetDetailViewController).tweet = tweet
+        }
     }
-    */
 
 }

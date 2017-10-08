@@ -57,6 +57,7 @@ class TweetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
+        accessoryType = .disclosureIndicator
     }
     
     override func layoutSubviews() {
