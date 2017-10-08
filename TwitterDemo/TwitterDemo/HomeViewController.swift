@@ -1,5 +1,5 @@
 //
-//  TweetsViewController.swift
+//  HomeViewController.swift
 //  TwitterDemo
 //
 //  Created by Siji Rachel Tom on 9/30/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
     

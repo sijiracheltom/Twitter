@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 success: { [weak self] in
                     print("There is a current user")
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+                    let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationControllerID")
                     self?.window?.rootViewController = vc
             },
                 failure: { (error: Error) in
@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogOut), name: NSNotification.Name(rawValue: kTDUserDidSignOutNotificationName), object: nil)
+        
+        // Customize navigation bar globally
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0/255.0, green: 157/255.0, blue: 246/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barStyle = UIBarStyle.blackOpaque
         
         return true
     }
