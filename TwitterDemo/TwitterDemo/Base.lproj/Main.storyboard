@@ -123,6 +123,7 @@
                                         <constraint firstItem="MIv-T8-JgL" firstAttribute="leading" secondItem="UVf-0r-AVV" secondAttribute="leading" constant="8" id="gdT-on-4eh"/>
                                         <constraint firstAttribute="trailing" secondItem="R6a-It-vet" secondAttribute="trailing" constant="4" id="hXb-0T-LXQ"/>
                                         <constraint firstItem="R6a-It-vet" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eeB-PP-cg2" secondAttribute="trailing" constant="4" id="vSI-rn-D5O"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MIv-T8-JgL" secondAttribute="bottom" constant="4" id="zgj-z5-Pc9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -956,7 +957,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Xvo-gN-gO5"/>
-        <segue reference="1x6-bK-gyF"/>
+        <segue reference="ykU-GL-usM"/>
         <segue reference="PM6-tD-te9"/>
     </inferredMetricsTieBreakers>
 </document>
