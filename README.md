@@ -15,8 +15,8 @@ The following **required** functionality is completed:
 - [x] Profile page
    - [x] Contains the user header view
    - [x] Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] Home Timeline
-   - [ ] Tapping on a user image should bring up that user's profile page
+- [x] Home Timeline
+   - [x] Tapping on a user image should bring up that user's profile page
 
 The following **optional** features are implemented:
 
@@ -40,7 +40,6 @@ The following **additional** features are implemented:
 - [x] Tapping on a tweet in the ‘Profile’ view will open details about the tweet
 - [x] Each of the view controllers are named appropriately with the name of the user
 - [x] User’s header view is retrieved appropriately - either as profile background or profile banner
-- [] Gesture recognizer tweaks to ensure profile image taps are different from table-view cell taps
 
 ## Video Walkthrough
 

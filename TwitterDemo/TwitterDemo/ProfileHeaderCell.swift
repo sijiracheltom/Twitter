@@ -24,7 +24,7 @@ class ProfileHeaderCell: UITableViewCell {
                 profileImageView.setImageWith(profileURL)
             }
             userNameLabel.text = user.name ?? ""
-            screenNameLabel.text = user.screenname ?? ""
+            screenNameLabel.text = "@\(user.screenname ?? "")"
             descriptionLabel.text = user.tagline ?? ""
             if let headerURL = user.headerImageURL {
                 headerImageView.setImageWith(headerURL)
@@ -40,6 +40,7 @@ class ProfileHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

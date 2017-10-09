@@ -74,8 +74,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell        
         cell.tweet = tweets[indexPath.row]
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(onProfileImageTap))
+        tapGR.delegate = self
+        cell.profileImage.addGestureRecognizer(tapGR)
+        
         return cell
-    }    
+    }
+    
+    func onProfileImageTap(_sender : AnyObject) -> Void {
+        if _sender is UITapGestureRecognizer {
+            performSegue(withIdentifier: "HomeToProfileSegueID", sender: _sender)
+        }
+    }
 
     
     // MARK: - Navigation
