@@ -2,7 +2,7 @@
 
 **TwitterDemo** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Part 2 - Time spent: **X** hours spent in total
+Part 2 - Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -45,7 +45,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/1326734/31322689-6298a80c-ac51-11e7-8a7d-4a63bca57651.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
