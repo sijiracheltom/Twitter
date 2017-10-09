@@ -112,7 +112,11 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         
         if let VC = VC {
             if option == .profile {
-                (VC as! ProfileViewController).user = User.currentUser
+                let user = User.currentUser
+                (VC as! ProfileViewController).user = user
+                navigationItem.title = user?.name
+            } else {
+                navigationItem.title = stringify(menuOption: option)
             }
             
             if let currentContentVC = currentContentVC {
@@ -128,7 +132,6 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         }
         
         animate(toOrigin: true)
-        navigationItem.title = stringify(menuOption: option)
     }
     
      // MARK: - Navigation

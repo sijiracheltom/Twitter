@@ -103,6 +103,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let tweet = tweets[indexpath?.row ?? 0]
                 
                 (nextC as! ProfileViewController).user = tweet.user
+                navigationItem.title = tweet.user?.name
             }
         }
         

@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             tableView.backgroundColor = backgroundColor
         }
         
+        navigationItem.title = user.name
+        
         fetchUserTimeLine(forUserID: user.id)
     }
     

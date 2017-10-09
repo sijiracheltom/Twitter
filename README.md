@@ -38,7 +38,7 @@ The following **additional** features are implemented:
 - [x] Used XIBs to avoid duplicated code and UI.
 - [x] Set the profile’s background color based on what the API returns
 - [x] Tapping on a tweet in the ‘Profile’ view will open details about the tweet
-- [] Each of the view controllers are named appropriately with the name of the user
+- [x] Each of the view controllers are named appropriately with the name of the user
 - [x] User’s header view is retrieved appropriately - either as profile background or profile banner
 - [] Gesture recognizer tweaks to ensure profile image taps are different from table-view cell taps
 
