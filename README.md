@@ -4,7 +4,7 @@
 
 # Part 2 
 
-## Time spent: **12** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -52,12 +52,9 @@ Here's a walkthrough of implemented user stories:
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
-
-# =======================================================
-
 # Part 1
 
-## Time spent: **12** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
